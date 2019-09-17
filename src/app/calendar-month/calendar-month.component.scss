@@ -1,0 +1,92 @@
+%common-text-header-style {
+    font-weight: normal;
+    margin: 15px 0;
+    font-size: 36px;
+  }
+  
+  %common-text-table-style {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    background: none;
+    min-width: 50px;
+    cursor: default;
+  }
+  
+  $cell-color: #e0e2e5;
+  $shortened-day-color: #71a3f2;
+  $non-working-day-color: #FFA07A;
+  $local-holiday-color: #ff0000;
+  $public-holiday-color: #f5f909;
+  
+  .container {
+    &-width {
+      width: 40%;
+      margin: auto;
+      min-width: 400px;
+    }
+  
+    .header {
+      text-align: center;
+  
+      p {
+        @extend %common-text-header-style;
+      }
+      a {
+        @extend %common-text-header-style;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  
+    .body table {
+      border: 2px solid #000;
+      text-align: center;
+      margin: auto;
+      width: 100%;
+  
+      tr {
+        height: 60px;
+  
+        th {
+          cursor: default;
+          border: 1px dashed $cell-color;
+          background-color: $cell-color;
+        }
+        td {
+          background-color: #fff;
+          border: 1px dashed $cell-color;
+          width: 60px;
+  
+          a {
+            @extend %common-text-table-style;
+            font-size: 20px;
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+          p {
+            @extend %common-text-table-style;
+          }
+        }
+        .shortened {
+          background-color: $shortened-day-color;
+        }
+        .non-working {
+          background-color: $non-working-day-color;
+        }
+        .local-holiday {
+          background-color: $local-holiday-color;
+        }
+        .public-holiday {
+          border: 3px solid $public-holiday-color;
+        }
+      }
+    }
+  }
+  

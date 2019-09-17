@@ -1,0 +1,39 @@
+%common-text-table-style {
+    font-size: 36px;
+    font-weight: normal;
+  }
+  
+  .container {
+    .header {
+      mat-grid-list {
+        width: 100%;
+  
+        mat-grid-tile {
+          a {
+            @extend %common-text-table-style;
+  
+            &:hover {
+              cursor: pointer;
+              text-decoration: underline;
+            }
+          }
+          p {
+            @extend %common-text-table-style;
+          }
+        }
+      }
+    }
+    .body {
+      .calendar-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 auto;
+  
+        .calendar-item {
+          flex: 0 0 400px;
+          padding: 0;
+        }
+      }
+    }
+  }

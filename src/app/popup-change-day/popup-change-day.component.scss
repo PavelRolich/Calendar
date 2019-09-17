@@ -1,0 +1,46 @@
+%common-block-style {
+    border: 2px solid #000;
+    margin-bottom: 20px;
+  }
+  
+  %common-margin {
+    margin: 0 0 5px;
+  }
+  
+  .content {
+    text-align: center;
+  
+    .header {
+      p {
+        font-size: 24px;
+        margin: 5px 0;
+      }
+    }
+    .info {
+      @extend %common-block-style;
+  
+      p {
+        @extend %common-margin;
+      }
+      mat-list {
+        .item {
+          height: 30px;
+        }
+      }
+    }
+    .moove-to-data {
+      @extend %common-block-style;
+  
+      p {
+        @extend %common-margin;
+      }
+    }
+    .save-button {
+      button {
+        height: 40px;
+        font-size: 20px;
+        text-align: center;
+        display: inline-block;
+      }
+    }
+  }

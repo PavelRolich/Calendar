@@ -1,0 +1,61 @@
+<div class="container" [class.container-width]="enable">
+    <div class="header">
+      <ng-container *ngIf="enable; else block">
+        <p>{{ nowMonth }}</p>
+      </ng-container>
+      <ng-template #block>
+        <a
+          [routerLink]="['/calendar-list', nowYear, numMonth]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >{{ nowMonth }}</a
+        >
+      </ng-template>
+    </div>
+    <div class="body">
+      <table mat-table>
+        <tr>
+          <th mat-header="monday">Пн</th>
+          <th mat-header="tuesday">Вт</th>
+          <th mat-header="wednesday">Ср</th>
+          <th mat-header="thursday">Чт</th>
+          <th mat-header="friday">Пт</th>
+          <th mat-header="Saturday" class="non-working">Сб</th>
+          <th mat-header="Sunday" class="non-working">Вс</th>
+        </tr>
+        <tr *ngFor="let row of daysArrayInCalendar">
+          <ng-container *ngFor="let day of row">
+            <td
+              [class.non-working]="day.isNonWorkingDay"
+              [class.public-holiday]="day.isPublicHoliday"
+              [class.shortened]="day.isShortenedDay"
+              [class.local-holiday]="day.isLocalHoliday"
+              *ngIf="enable; else unset"
+            >
+              <a (click)="openDialog(day.id)">{{ day.id }}</a>
+            </td>
+            <ng-template #unset>
+              <td
+                [class.non-working]="day.isNonWorkingDay"
+                [class.public-holiday]="day.isPublicHoliday"
+                [class.shortened]="day.isShortenedDay"
+                [class.local-holiday]="day.isLocalHoliday"
+              >
+                <p>{{ day.id }}</p>
+              </td>
+            </ng-template>
+          </ng-container>
+        </tr>
+        <tr>
+          <td colspan="3">Рабочих дней - {{ workingDaysCount }}</td>
+          <td colspan="4">
+            Норма рабочего времени - {{ workingTimeEight }}({{
+              workingTimeSeven
+            }})
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="header">
+      <mat-grid-list cols="5" rowHeight="70px">
+        <mat-grid-tile
+          ><a
+            [routerLink]="['/calendar-list', previousDate.getFullYear(), previousNumMonth]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >{{ previousMonth }}</a
+          ></mat-grid-tile
+        >
+        <mat-grid-tile [colspan]="3"
+          ><p>
+            Производственный календарь
+            <a
+              [routerLink]="['/full-year', nowYear]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="active"
+              >{{ nowYear }}</a
+            >
+          </p></mat-grid-tile
+        >
+        <mat-grid-tile
+          ><a
+            [routerLink]="['/calendar-list', nextDate.getFullYear(), nextNumMonth]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >{{ nextMonth }}</a
+          ></mat-grid-tile
+        >
+      </mat-grid-list>
+      <hr />
+    </div>
+    <div class="body">
+      <app-calendar-month
+        [nowYear]="nowYear"
+        [numMonth]="numMonth"
+        [enable]="enable"
+      >
+      </app-calendar-month>
+    </div>
+    <div class="footer">
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let holiday of holidaysThisMonth">
+          {{ holiday.id }} {{ holiday.month }} -- {{ holiday.description }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>

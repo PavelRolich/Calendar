@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="header">
+      <mat-grid-list cols="5" rowHeight="70px">
+        <mat-grid-tile
+          ><a
+            value="bold"
+            [routerLink]="['/full-year', previousYear]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >{{ previousYear }}</a
+          ></mat-grid-tile
+        >
+        <mat-grid-tile [colspan]="3"
+          ><p>
+            Производственный календарь на {{ nowYear }} год в Беларуси
+          </p></mat-grid-tile
+        >
+        <mat-grid-tile
+          ><a
+            value="bold"
+            [routerLink]="['/full-year', nextYear]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >{{ nextYear }}</a
+          ></mat-grid-tile
+        >
+      </mat-grid-list>
+    </div>
+    <hr />
+    <div class="body">
+      <div class="calendar-list">
+        <div class="calendar-item" *ngFor="let month of numMonthArray">
+          <app-calendar-month
+            [nowYear]="nowYear"
+            [numMonth]="month"
+            [enable]="enable"
+          ></app-calendar-month>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="header">
+        <p>{{ selectedDateString }}</p>
+        <hr>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle value="bold" [disabled]="disabledSignDay" (click)="changeSignDay()">Изменить признак дня</mat-button-toggle>
+          <mat-button-toggle value="bold" [disabled]="disabledWrapDay" (click)="makeWrapday()">Сделать перенос дня</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <hr>
+  
+      <div class="info">
+        <p mat-dialog-title>Признаки дня</p>
+          <mat-list role="list">
+              <mat-list-item class="item" role="listitem"><mat-checkbox [(ngModel)]="date.isPublicHoliday" [disabled]="disabledSignDayItem">Государственный праздничный день</mat-checkbox></mat-list-item>
+              <mat-list-item class="item" role="listitem"> <mat-checkbox [(ngModel)]="date.isLocalHoliday" [disabled]="disabledSignDayItem">Локальный праздничный день</mat-checkbox></mat-list-item>
+              <mat-list-item class="item" role="listitem"><mat-checkbox [(ngModel)]="date.isNonWorkingDay" [disabled]="disabledSignDayItem">Выходной день</mat-checkbox></mat-list-item>
+              <mat-list-item class="item" role="listitem"><mat-checkbox [(ngModel)]="date.isShortenedDay" [disabled]="disabledSignDayItem">Сокращенный день</mat-checkbox></mat-list-item>
+          </mat-list>
+      </div>
+      <div class="moove-to-data">
+          <p mat-dialog-title>Перенос дня</p>
+          <mat-form-field>
+              <input matInput [(ngModel)]="data.date.mooveTo" [matDatepickerFilter]="myFilter" [min]="minDate" [max]="maxDate" [matDatepicker]="pickerReplacementDayReadOnly" [formControl]="dateValue" [disabled]="disabledWrapDayItem">
+              <mat-datepicker-toggle matSuffix [for]="pickerReplacementDayReadOnly"></mat-datepicker-toggle>
+              <mat-datepicker #pickerReplacementDayReadOnly></mat-datepicker>
+          </mat-form-field>
+      </div>
+  
+      <div class="save-button">
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <button mat-button value="bold" (click)="onNoClick()">Закрыть окно</button>
+              <button mat-button [disabled]="disabledSaveButton" (click)="saveChanges()" value="bold">Сохранить изменения</button>
+          </mat-button-toggle-group>
+      </div>
+  </div>
+  

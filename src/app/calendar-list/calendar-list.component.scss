@@ -1,0 +1,41 @@
+%common-text-table-style {
+    font-size: 36px;
+    font-weight: normal;
+  }
+  
+  .container {
+    .header {
+      margin-bottom: 50px;
+  
+      mat-grid-list {
+        width: 100%;
+  
+        mat-grid-tile {
+          a {
+            @extend %common-text-table-style;
+  
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+          p {
+            @extend %common-text-table-style;
+  
+            a {
+              @extend %common-text-table-style;
+            }
+          }
+        }
+      }
+    }
+    .footer {
+      margin-left: 30%;
+  
+      mat-list {
+        mat-list-item {
+          height: 30px;
+        }
+      }
+    }
+  }
